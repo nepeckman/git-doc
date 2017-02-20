@@ -11,7 +11,6 @@ I am not familiar with any git GUIs. Personally, I like the percision and contro
 
 ## Starting a git repositiory
 A git repository lives inside a folder on your filesystem. Any folder on your filesystem can become a git repository with `git init`. Additionally, you can create a repository by using `git clone` to copy another repository to your filesystem.
-
 **CLI Instructions**:
 * For making a new repository:
    Navigate to the folder you want to make the root of your project. Enter `git init` into your command line.
@@ -22,7 +21,6 @@ A git repository lives inside a folder on your filesystem. Any folder on your fi
 
 ## Adding changes
 When you make changes to the source files, git doesn't automatically track them. Instead, you must inform git of what files you've changed. The `git add` command tells git to look at changes made in a file, or in all files in a folder. This step is necessary every time you want to track changes, not just the first time you create a file. After telling git all the files and folders that you've changed, use `git commit` to submit your changes. This can be considered like a giant save button. You've now created a backup describing how all of your files are in this moment. You can use this backup to retrieve old states, but that is a little beyond the scope of this tutorial. As a final note, the .gitignore file lists all files that should never be tracked by git. Git will never track changes to a file or folder in the .gitignore file.
-
 **CLI Instructions**
 * For tracking files:
    Navigate to your git repository's root folder. `git add <folder or file>` tracks a folder or file.  
@@ -36,7 +34,6 @@ When you make changes to the source files, git doesn't automatically track them.
 
 ## Syncing changes made somewhere else to your repo
 So you've made a couple changes to your source files in your local git repository. How do you go about integrating those changes to your repository with another repository? The `git pull` command will ask a different git repository (henceforth called the remote repository) if there have been any changes to the remote repository since the previous `git pull`. If there have been changes, git attempts to merge the changes into your local repository. If there is any sort of conflict (Ex two people modified the same line in different ways) it will throw an error and require a person to tell it how to merge these two files. This is a little outside the scope of the tutorial, as merging can be complicated. Before using `git pull`, ensure that your local changed are committed, or git may complain about changes in untracked files.
-
 **CLI Instructions**
 * Navigate to your git repo's root folder. `git pull <remote> <branch>` pulls the changes to the remote repo, on a given branch. These two topics will be discussed more later.   
 
@@ -44,7 +41,6 @@ So you've made a couple changes to your source files in your local git repositor
 Lets start this out with an important note. If you try to push your changes to another repository, but you haven't intergrated the latest changes from that repository to your local repo, the push will not be successfull. Unless you force the push. But please don't do that.
 
 Once you've pull the changes from a remote repo, you sync your changes to that repo with `git push`. This is a little less complicated because all the merging happened on the previous step!
-
 **CLI Instructions**
 * Navigate to your git repo's root folder. `git push <remote> <branch>`. Make sure you've committed your changes, as this pushes your latest commit.
 
@@ -53,7 +49,6 @@ If you started a repo through `git clone`, the remote repository is already save
 
 ## Branches
 This is where my knowledge breaks down a little, and we don't need to go into depth here so I'm not. Branches are different versions of the same repository. You can update branches independantly of each other, then merge branches together. A common use for this is making a development branch so you can keep the master branch clean. The default branch name is called master. **Here's the crucial part**: when you first create a git repository (through init or clone), you are on the master branch. To make sure the edits you make are tracked and commited to a different branch, you must use `git checkout`.
-
 **CLI Instructions**
 * Navigate to your git repo's root folder. `git checkout <branch>`. This will put you on the given branch, and you will stay there until you `git checkout <different branch>`, even if you turn off your computer.
 * `git branch` lists all your branches. The starred branch is your current branch.
@@ -61,7 +56,6 @@ This is where my knowledge breaks down a little, and we don't need to go into de
 
 ## The usual workflow
 This is the way most editing sessions will generally go. If this master plan fails, either dig through git documentation to resolve it, or contact someone who knows more git then you. For this workflow, replace <branch> with your prefered branch. If this is a project with just a master branch, make it master. If it has dev branches, use the name of your dev branch.
-
 1. Pull changes with `git pull origin <branch>`.
 2. Make sure you are on the correct branch with `git branch`. Use `git checkout <branch>` if you aren't.
 3. **EDITING**
